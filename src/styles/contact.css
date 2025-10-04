@@ -1,0 +1,206 @@
+/* contact.css */
+.contact-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.contact-section h2 {
+  font-size: 2.8rem; 
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 2.5rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, rgba(131, 167, 217, 0.85), rgba(133, 175, 233, 0.6));
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  width: 350px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* Formulario */
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.form-card button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-card button:hover {
+  background-color: #1e40af;
+}
+
+/* Información de contacto */
+.info-card h3 {
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-card {
+    width: 90%;
+  }
+}
+
+/* Select de servicio */
+.form-card select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+}
+
+.form-card select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Mensajes de estado */
+.success-message {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  border: 1px solid #a7f3d0;
+  font-weight: 500;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  border: 1px solid #fca5a5;
+  font-weight: 500;
+}
+
+/* Botón deshabilitado */
+.form-card button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* ===== Información de contacto mejorada ===== */
+.info-card {
+  background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.info-card h3 {
+  font-size: 1.8rem;
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Íconos de teléfono y correo */
+.info-card p.phone::before {
+  content: "📞";
+  font-size: 1.2rem;
+  color: #2563eb;
+}
+
+.info-card p.email::before {
+  content: "✉️";
+  font-size: 1.2rem;
+  color: #2563eb;
+}
+
+/* Nota decorativa al final */
+.info-card p.footer-note {
+  margin-top: 1.5rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.info-card p.footer-note::before {
+  content: "✨";
+  color: #facc15;
+  font-size: 1.2rem;
+}

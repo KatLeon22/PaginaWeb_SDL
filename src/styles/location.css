@@ -1,0 +1,68 @@
+.location-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.location-section h2 {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.location-intro {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+.location-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.location-info {
+  max-width: 400px;
+  text-align: left;
+  background: rgba(37, 99, 235, 0.1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.location-info p {
+  font-size: 1rem;
+  color: #1f2937;
+  margin-bottom: 0.8rem;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .location-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .location-info {
+    width: 90%;
+  }
+}
+
+.location-section h2 {
+  font-size: 2.8rem; /* igual que About Us y Services */
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1); /* sutil sombra */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards; /* misma animación que About Us */
+}

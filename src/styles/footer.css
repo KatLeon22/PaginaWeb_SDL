@@ -1,0 +1,91 @@
+.footer {
+  width: 100%;
+  background-color: #1f2937;
+  color: white;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  text-align: left;
+  flex: 1;
+}
+
+.footer-logo .logo {
+  width: 150px; /* Logotipo más grande */
+  height: auto;
+}
+
+.logo-text {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Contacto - centro */
+.footer-contact {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-contact h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  text-decoration: underline;
+}
+
+.contact-item {
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact a {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Enlaces rápidos - derecha */
+.footer-links {
+  flex: 1;
+  text-align: right;
+}
+
+.footer-links h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  text-decoration: underline;
+}
+
+.footer-links a {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
+  border-top: 1px solid #374151;
+  padding-top: 1rem;
+}
+
+

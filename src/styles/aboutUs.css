@@ -1,0 +1,120 @@
+/* Sección general */
+.aboutus-section {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe); /* celeste degradado */
+  border-radius: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  color: #1f2937;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* Título principal */
+.aboutus-section h2 {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+}
+
+/* Párrafo de introducción */
+.aboutus-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #1f2937;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Contenedor de tarjetas */
+.aboutus-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Tarjetas */
+.card {
+  background: linear-gradient(135deg, rgba(131,167,217,0.85), rgba(133,175,233,0.6));
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  width: 250px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: #1e3a8a;
+  margin-bottom: 0.8rem;
+}
+
+/* Texto dentro de tarjeta */
+.aboutus-text {
+  font-size: 1rem;
+  color: #1f2937;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Valores */
+.values-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.value-item {
+  background-color: rgba(255,255,255,0.3);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #1e3a8a;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.value-item:hover {
+  background-color: rgba(243,244,246,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aboutus-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
+/* Título principal */
+.aboutus-section h2 {
+  font-size: 2.8rem; /* igual que Services */
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1); /* sutil sombra */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
