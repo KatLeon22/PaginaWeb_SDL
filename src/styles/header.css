@@ -1,0 +1,167 @@
+/* header.css */
+
+/* Barra de navegación */
+.header {
+  background: linear-gradient(#1f2937); /* degradado gris elegante */
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Contenedor principal */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+
+/* Logo y texto */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  height: 3rem;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Menú */
+.menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #d1d5db; /* gris más claro al pasar el mouse */
+}
+
+
+.company-text {
+  display: flex;
+  flex-direction: column; /* apila verticalmente */
+}
+
+/* Nombre principal */
+.company-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  display: block; /* fuerza que ocupe línea completa */
+}
+
+/* Tagline o subtítulo */
+.company-tagline {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #d1d5db;
+  display: block; /* fuerza que vaya debajo */
+  margin-top: 0.15rem; /* pequeño espacio debajo del nombre */
+}
+
+.language-select {
+  background-color: #1f2937; /* Igual que el header */
+  color: white; /* Texto blanco */
+  border: 1px solid #374151; /* Borde gris oscuro */
+  border-radius: 0.375rem; /* Bordes redondeados */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.language-select:hover {
+  background-color: #374151; /* Gris más claro al hover */
+}
+
+.language-select option {
+  background-color: white; /* Fondo blanco en el desplegable */
+  color: #1f2937; /* Texto oscuro */
+}
+
+
+
+.language-select-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+
+.language-select-container span {
+  font-weight: 600;
+}
+
+.language-select {
+  background-color: #1f2937; /* igual al header */
+  color: white;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none; /* quitar flecha por defecto del navegador */
+  position: relative;
+}
+
+.language-select:hover {
+  background-color: #374151;
+}
+
+/* Flecha personalizada */
+.language-select::after {
+  content: "▼";
+  position: absolute;
+  right: 0.5rem;
+  pointer-events: none;
+}
+
+/* Opciones */
+.language-select option {
+  background-color: white; 
+  color: #1f2937; 
+}
+
+/* Botón dropdown idioma */
+.header button {
+  background-color: #1f2937; /* coincide con el header */
+  color: white;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header button:hover {
+  background-color: #374151;
+}
+
+.header span {
+  color: white;
+}

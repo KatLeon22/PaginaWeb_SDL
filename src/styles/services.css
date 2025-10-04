@@ -1,0 +1,96 @@
+.services-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #e0f2fe; /* celeste uniforme como About Us */
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05); /* ligera sombra */
+}
+
+.services-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+  letter-spacing: 1px;
+}
+
+.services-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: linear-gradient(135deg, rgba(131,167,217,0.85), rgba(133,175,233,0.6));
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  width: 250px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* Título de la galería */
+.services-photos-title {
+  margin-top: 3rem;
+  font-size: 1.8rem;
+  color: #1e3a8a;
+  text-align: center;
+}
+
+/* Contenedor de las fotos */
+.services-photos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Cada foto */
+.service-photo {
+  width: 45%;
+  max-width: 400px;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-photo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-photo {
+    width: 90%;
+  }
+}
