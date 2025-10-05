@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import logo from "../assets/logo1.png"; // Asegúrate de tener un logo en esta ruta
-import "../styles/header.css"; // Asegúrate de tener los estilos necesarios
+import logo from "../assets/logo1.png";
+import "../styles/header.css";
 import { Link } from "react-router-dom";
-import flagEs from "../assets/guatemala.png"; // Bandera de español
-import flagEn from "../assets/usa.png"; // Bandera de inglés
-
+import flagEs from "../assets/guatemala.png";
+import flagEn from "../assets/usa.png";
 
 const Header = ({ lang, setLang }) => {
   const [open, setOpen] = useState(false); // Estado para abrir/cerrar dropdown
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para menú móvil
 
   // Idiomas disponibles
   const languages = [
@@ -22,21 +22,36 @@ const Header = ({ lang, setLang }) => {
     setOpen(false);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <header className="header">
-      <div className="container flex justify-between items-center p-4">
+      <div className="header-container">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <img src={logo} alt="Logotipo" className="h-12 w-auto" />
+        <div className="logo-container">
+          <img src={logo} alt="Logotipo" className="logo" />
           <div className="company-text">
             <span className="company-name">S DE LEON</span>
             <span className="company-tagline"></span>
           </div>
         </div>
 
-        {/* Navegación */}
-        <nav className="flex items-center space-x-6">
-          <ul className="flex space-x-6">
+        {/* Botón hamburguesa para móvil */}
+        <button 
+          className="mobile-menu-button"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}></span>
+          <span className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}></span>
+          <span className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}></span>
+        </button>
+
+        {/* Navegación Desktop */}
+        <nav className="desktop-nav">
+          <ul className="menu">
             <li><Link to="/">{lang === "es" ? "Inicio" : "Home"}</Link></li>
             <li><Link to="/about">{lang === "es" ? "¿Quiénes Somos?" : "About Us"}</Link></li>
             <li><Link to="/services">{lang === "es" ? "Servicios" : "Services"}</Link></li>
@@ -44,38 +59,70 @@ const Header = ({ lang, setLang }) => {
             <li><Link to="/location">{lang === "es" ? "Ubicación" : "Location"}</Link></li>
           </ul>
 
-          {/* Selector de idioma */}
-        {/* Selector de idioma */}
-<div className="relative ml-6 flex items-center">
-  <span className="mr-2 font-semibold text-white">
-    {lang === "es" ? "Idioma:" : "Language:"}
-  </span>
+          {/* Selector de idioma Desktop */}
+          <div className="language-selector">
+            <span className="language-label">
+              {lang === "es" ? "Idioma:" : "Language:"}
+            </span>
+            <div className="relative">
+              <button
+                onClick={() => setOpen(!open)}
+                className="language-button"
+              >
+                <img src={currentLang.flag} alt={currentLang.label} className="flag-icon" />
+                <span>{currentLang.label}</span>
+                <span className="dropdown-arrow">&#9662;</span>
+              </button>
 
-  <button
-    onClick={() => setOpen(!open)}
-    className="flex items-center space-x-2 border border-gray-500 rounded px-3 py-1 bg-gray-800 text-white hover:bg-gray-700"
-  >
-    <img src={currentLang.flag} alt={currentLang.label} className="h-5 w-5" />
-    <span>{currentLang.label}</span>
-    <span className="ml-1">&#9662;</span>
-  </button>
+              {open && (
+                <div className="language-dropdown">
+                  {languages.map((l) => (
+                    <div
+                      key={l.code}
+                      onClick={() => handleSelect(l.code)}
+                      className="language-option"
+                    >
+                      <img src={l.flag} alt={l.label} className="flag-icon" />
+                      <span>{l.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </nav>
 
-  {open && (
-    <div className="absolute right-0 mt-1 w-36 bg-gray-800 border border-gray-600 rounded shadow-lg z-50">
-      {languages.map((l) => (
-        <div
-          key={l.code}
-          onClick={() => handleSelect(l.code)}
-          className="flex items-center px-3 py-2 hover:bg-gray-700 cursor-pointer text-white"
-        >
-          <img src={l.flag} alt={l.label} className="h-5 w-5 mr-2" />
-          <span>{l.label}</span>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-      
+        {/* Navegación Móvil */}
+        <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
+          <ul className="mobile-menu">
+            <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Inicio" : "Home"}</Link></li>
+            <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "¿Quiénes Somos?" : "About Us"}</Link></li>
+            <li><Link to="/services" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Servicios" : "Services"}</Link></li>
+            <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Contacto" : "Contact"}</Link></li>
+            <li><Link to="/location" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Ubicación" : "Location"}</Link></li>
+          </ul>
+
+          {/* Selector de idioma Móvil */}
+          <div className="mobile-language-selector">
+            <span className="language-label">
+              {lang === "es" ? "Idioma:" : "Language:"}
+            </span>
+            <div className="language-options">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => {
+                    handleSelect(l.code);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`language-option-mobile ${lang === l.code ? 'active' : ''}`}
+                >
+                  <img src={l.flag} alt={l.label} className="flag-icon" />
+                  <span>{l.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
         </nav>
       </div>
     </header>
