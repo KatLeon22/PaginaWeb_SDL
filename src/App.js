@@ -9,6 +9,7 @@ import Services from './pages/Service';
 import Contact from './pages/Contact';
 import Location from './pages/Location';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
 
         {/* Footer */}
         <Footer userLang={userLang} />
+        
+        {/* Analytics - Esto rastrea automáticamente las visitas */}
+        <Analytics />
       </div>
     </Router>
   );
