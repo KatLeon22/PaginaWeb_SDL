@@ -4,6 +4,7 @@ import "../styles/header.css";
 import { Link } from "react-router-dom";
 import flagEs from "../assets/guatemala.png";
 import flagEn from "../assets/usa.png";
+import { trackLanguageChange } from '../utils/analytics';
 
 const Header = ({ lang, setLang }) => {
   const [open, setOpen] = useState(false); // Estado para abrir/cerrar dropdown
@@ -20,6 +21,7 @@ const Header = ({ lang, setLang }) => {
   const handleSelect = (code) => {
     setLang(code);
     setOpen(false);
+    trackLanguageChange(code);
   };
 
   const toggleMobileMenu = () => {
