@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import logo from "../assets/logo1.png";
+import logo from "../assets/FurniLogo.jpg";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 import flagEs from "../assets/guatemala.png";
 import flagEn from "../assets/usa.png";
 import { trackLanguageChange } from '../utils/analytics';
+import { translations } from '../utils/translations';
 
 const Header = ({ lang, setLang }) => {
   const [open, setOpen] = useState(false); // Estado para abrir/cerrar dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para menú móvil
+  const t = translations[lang];
 
   // Idiomas disponibles
   const languages = [
@@ -33,9 +35,11 @@ const Header = ({ lang, setLang }) => {
       <div className="header-container">
         {/* Logo */}
         <div className="logo-container">
-          <img src={logo} alt="Logotipo" className="logo" />
+          <Link to="/">
+            <img src={logo} alt="Logotipo" className="logo" />
+          </Link>
           <div className="company-text">
-            <span className="company-name">S DE LEON</span>
+            <span className="company-name">Furniture</span>
             <span className="company-tagline"></span>
           </div>
         </div>
@@ -54,11 +58,9 @@ const Header = ({ lang, setLang }) => {
         {/* Navegación Desktop */}
         <nav className="desktop-nav">
           <ul className="menu">
-            <li><Link to="/">{lang === "es" ? "Inicio" : "Home"}</Link></li>
-            <li><Link to="/about">{lang === "es" ? "¿Quiénes Somos?" : "About Us"}</Link></li>
-            <li><Link to="/services">{lang === "es" ? "Servicios" : "Services"}</Link></li>
-            <li><Link to="/contact">{lang === "es" ? "Contacto" : "Contact"}</Link></li>
-            <li><Link to="/location">{lang === "es" ? "Ubicación" : "Location"}</Link></li>
+            <li><Link to="/">{t.nav.home}</Link></li>
+            <li><Link to="/">{t.nav.collections}</Link></li>
+            <li><Link to="/contact">{t.nav.contact}</Link></li>
           </ul>
 
           {/* Selector de idioma Desktop */}
@@ -97,11 +99,9 @@ const Header = ({ lang, setLang }) => {
         {/* Navegación Móvil */}
         <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-menu">
-            <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Inicio" : "Home"}</Link></li>
-            <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "¿Quiénes Somos?" : "About Us"}</Link></li>
-            <li><Link to="/services" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Servicios" : "Services"}</Link></li>
-            <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Contacto" : "Contact"}</Link></li>
-            <li><Link to="/location" onClick={() => setMobileMenuOpen(false)}>{lang === "es" ? "Ubicación" : "Location"}</Link></li>
+            <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{t.nav.home}</Link></li>
+            <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{t.nav.collections}</Link></li>
+            <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</Link></li>
           </ul>
 
           {/* Selector de idioma Móvil */}

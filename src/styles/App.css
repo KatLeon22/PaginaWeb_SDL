@@ -1,6 +1,6 @@
-/* ------------------ Animaciones / logos / decoraciones ------------------ */
+/* App.css - Estilos generales modernos y premium */
 
-/* Si más adelante quieres agregar un logo animado */
+/* Animaciones / logos / decoraciones */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -34,8 +34,16 @@
   text-decoration: none;
 }
 
-/* Ajustes generales si necesitas personalizar Tailwind */
+/* Ajustes generales */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  background: #F5F1EB;
+  min-height: 100vh;
+}
+
+/* Contenedor principal de la app */
+.font-sans {
+  background: #F5F1EB;
+  min-height: 100vh;
 }

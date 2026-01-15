@@ -4,10 +4,8 @@ import '../src/styles/App.css';
 import Home from './pages/Home';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
-import AboutUs from './pages/AboutUs';
-import Services from './pages/Service';
+import Catalog from './pages/Catalog';
 import Contact from './pages/Contact';
-import Location from './pages/Location';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { trackPageView } from './utils/analytics';
 
@@ -43,14 +41,12 @@ function App() {
         {/* Contenido principal según la ruta */}
         <Routes>
           <Route path="/" element={<Home userLang={userLang} />} />
-          <Route path="/about" element={<AboutUs userLang={userLang} />} />
-          <Route path="/services" element={<Services userLang={userLang} />} />
+          <Route path="/catalog/:collectionId" element={<Catalog userLang={userLang} />} />
           <Route path="/contact" element={<Contact userLang={userLang} />} />
-          <Route path="/location" element={<Location userLang={userLang} />} />
         </Routes>
 
         {/* Botón flotante de WhatsApp */}
-        <WhatsAppButton />
+        <WhatsAppButton userLang={userLang} />
 
         {/* Footer */}
         <Footer userLang={userLang} />

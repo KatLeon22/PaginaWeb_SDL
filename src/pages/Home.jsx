@@ -1,116 +1,58 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Importamos useNavigate
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
-import { FaTruck, FaShieldAlt, FaThumbsUp } from "react-icons/fa"; // Eliminamos FaClock
+import { translations, collections } from "../utils/translations";
+import { FaBed, FaCouch, FaUtensils, FaChair, FaHome, FaChild } from "react-icons/fa";
 
-import F1 from "../assets/F12.jpeg";
-import F2 from "../assets/F2.jpg";
-import F3 from "../assets/F8.jpg";
-
-const slides = [F1, F2, F3];
-
-const icons = [
-  <FaTruck size={40} />,
-  <FaShieldAlt size={40} />,
-  <FaThumbsUp size={40} />, // Eliminamos el icono de seguimiento
-];
-
-const content = {
-  es: {
-    welcomeTitle: "Bienvenidos a S DE LEON",
-    welcomeText:
-      "S DE LEON se especializa en transporte y entregas confiables, adaptadas a las necesidades de cada cliente. Seguridad, rapidez y profesionalismo en cada servicio.",
-    welcomeBtn: "Contáctanos",
-    whyTitle: "¿Por qué elegirnos?",
-    whyItems: [
-      "Puntualidad y confiabilidad en cada entrega",
-      "Equipo profesional y experimentado",
-      "Atención personalizada a cada cliente", // Eliminado "Tecnología y seguimiento"
-    ],
-  },
-  en: {
-    welcomeTitle: "Welcome to S DE LEON",
-    welcomeText:
-      "S DE LEON specializes in reliable transportation and deliveries tailored to each client's needs. Safety, speed, and professionalism in every service.",
-    welcomeBtn: "Contact Us",
-    whyTitle: "Why Choose Us?",
-    whyItems: [
-      "Punctuality and reliability in every delivery",
-      "Professional and experienced team",
-      "Personalized attention for every client", // Eliminado "Technology and real-time tracking"
-    ],
-  },
+// Mapeo de iconos para cada colección
+const collectionIcons = {
+  bedroom: <FaBed size={40} />,
+  supplement: <FaCouch size={40} />,
+  dining: <FaUtensils size={40} />,
+  "seating-stationary": <FaChair size={40} />,
+  "dining-room": <FaUtensils size={40} />,
+  "motion-seating": <FaCouch size={40} />,
+  youth: <FaChild size={40} />,
+  home: <FaHome size={40} />,
+  occasional: <FaCouch size={40} />,
+  mattress: <FaBed size={40} />,
 };
 
 const Home = ({ userLang }) => {
-  const [current, setCurrent] = useState(0);
-  const text = content[userLang];
-  const navigate = useNavigate(); // Hook para navegación
+  const navigate = useNavigate();
+  const t = translations[userLang];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleCollectionClick = (collectionId) => {
+    navigate(`/catalog/${collectionId}`);
+  };
 
   return (
     <section className="home-section">
       {/* Bienvenida */}
       <div className="welcome-modern">
-        <h1>{text.welcomeTitle}</h1>
-        <p>{text.welcomeText}</p>
-        <button
-          className="btn-modern"
-          onClick={() => navigate("/contact")} // Redirecciona a la ruta de Contact
-        >
-          {text.welcomeBtn}
-        </button>
+        <h1>{t.home.title}</h1>
+        <p>{t.home.subtitle}</p>
       </div>
 
-      {/* Carrusel */}
-      <div className="carousel-container">
-        <img
-          src={slides[current]}
-          alt={`Slide ${current + 1}`}
-          className="carousel-image"
-        />
-        <button
-          className="carousel-btn left"
-          onClick={() =>
-            setCurrent((current - 1 + slides.length) % slides.length)
-          }
-        >
-          &#10094;
-        </button>
-        <button
-          className="carousel-btn right"
-          onClick={() => setCurrent((current + 1) % slides.length)}
-        >
-          &#10095;
-        </button>
-        <div className="carousel-dots">
-          {slides.map((_, i) => (
-            <span
-              key={i}
-              className={`dot ${current === i ? "active" : ""}`}
-              onClick={() => setCurrent(i)}
-            ></span>
-          ))}
-        </div>
-      </div>
-
-      {/* Por qué elegirnos */}
-      <div className="why-choose-us">
-        <h2>{text.whyTitle}</h2>
-        <div className="why-cards">
-          {text.whyItems.map((itemText, index) => (
-            <div className="why-card" key={index}>
-              <div className="why-icon">{icons[index]}</div>
-              <p>{itemText}</p>
+      {/* Grid de Colecciones */}
+      <div className="collections-grid">
+        {collections.map((collection) => (
+          <div
+            key={collection.id}
+            className="collection-card"
+            onClick={() => handleCollectionClick(collection.id)}
+          >
+            <div className="collection-icon">
+              {collectionIcons[collection.id] || <FaHome size={40} />}
             </div>
-          ))}
-        </div>
+            <h3 className="collection-name">
+              {userLang === "es" ? collection.nameEs : collection.nameEn}
+            </h3>
+            <button className="collection-btn">
+              {t.home.viewCollection}
+            </button>
+          </div>
+        ))}
       </div>
     </section>
   );
