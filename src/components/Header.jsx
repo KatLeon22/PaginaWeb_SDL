@@ -15,7 +15,6 @@ const Header = ({ lang, setLang }) => {
     { code: "es", label: "Español", flag: flagEs },
     { code: "en", label: "English", flag: flagEn },
   ];
-
   const currentLang = languages.find((l) => l.code === lang);
 
   const handleSelect = (code) => {
