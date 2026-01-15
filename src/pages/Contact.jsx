@@ -1,14 +1,43 @@
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
 import "../styles/contact.css"; 
-import { translations } from '../utils/translations';
+
+const content = {
+  es: {
+    title: "Contacto",
+    intro: "Estamos aquí para ayudarte. Completa el formulario o utiliza nuestros datos de contacto.",
+    name: "Nombre",
+    email: "Correo electrónico",
+    service: "Servicio deseado",
+    message: "Mensaje",
+    submit: "Enviar",
+    infoTitle: "Nuestra información",
+    phoneGT: "Teléfono: +502 4796 7384",
+    emailGT: "Email: sdeleon.gt@globalsdl.com",
+    footerNote: "Será un gusto atenderte",
+  },
+  en: {
+    title: "Contact Us",
+    intro: "We are here to help. Fill out the form or use our contact information.",
+    name: "Name",
+    email: "Email",
+    service: "Service Desired",
+    message: "Message",
+    submit: "Send",
+    infoTitle: "Our Information",
+    phoneGT: "Phone: +502 4796 7384",
+    emailGT: "Email: sdeleon.gt@globalsdl.com",
+    footerNote: "We will be happy to assist you",
+  },
+};
 
 const Contact = ({ userLang }) => {
-  const t = translations[userLang];
+  const text = content[userLang];
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    service: '',
     message: ''
   });
 
@@ -36,15 +65,16 @@ const Contact = ({ userLang }) => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        service_type: formData.service,
         message: formData.message,
-        to_email: 'contacto@muebleria.com'
+        to_email: 'sdeleon.gt@globalsdl.com'
       };
 
       const result = await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
       if (result.status === 200) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', service: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -56,40 +86,6 @@ const Contact = ({ userLang }) => {
       setIsSubmitting(false);
     }
   };
-
-  const content = {
-    es: {
-      title: "Contacto",
-      intro: "Estamos aquí para ayudarte. Completa el formulario o contáctanos por WhatsApp.",
-      name: "Nombre",
-      email: "Correo electrónico",
-      message: "Mensaje",
-      submit: "Enviar",
-      infoTitle: "Nuestra información",
-      phone: "Teléfono: +502 4796 7384",
-      emailContact: "Email: contacto@muebleria.com",
-      footerNote: "Será un gusto atenderte",
-      whatsappTitle: "O contáctanos por WhatsApp",
-      whatsappBtn: "Abrir WhatsApp",
-    },
-    en: {
-      title: "Contact Us",
-      intro: "We are here to help. Fill out the form or contact us via WhatsApp.",
-      name: "Name",
-      email: "Email",
-      message: "Message",
-      submit: "Send",
-      infoTitle: "Our Information",
-      phone: "Phone: +502 4796 7384",
-      emailContact: "Email: contacto@muebleria.com",
-      footerNote: "We will be happy to assist you",
-      whatsappTitle: "Or contact us via WhatsApp",
-      whatsappBtn: "Open WhatsApp",
-    },
-  };
-
-  const text = content[userLang];
-  const whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(userLang === 'es' ? 'Hola, me interesa conocer más sobre sus productos' : 'Hello, I am interested in learning more about your products')}`;
 
   return (
     <section className="contact-section">
@@ -117,6 +113,18 @@ const Contact = ({ userLang }) => {
                 onChange={handleChange}
                 required 
               />
+              
+              <select 
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                required
+              >
+                <option value="">{text.service}</option>
+                <option value="moving">Moving / Transporte</option>
+                <option value="delivery">Delivery / Entrega</option>
+                <option value="other">Otro / Other</option>
+              </select>
 
               <textarea 
                 name="message"
@@ -151,21 +159,9 @@ const Contact = ({ userLang }) => {
           {/* Información de contacto */}
           <div className="contact-card info-card">
             <h3>{text.infoTitle}</h3>
-            <p className="phone">{text.phone}</p>
-            <p className="email">{text.emailContact}</p>
+            <p className="phone">{text.phoneGT}</p>
+            <p className="email">{text.emailGT}</p>
             <p className="footer-note">{text.footerNote}</p>
-            
-            <div className="whatsapp-section">
-              <h4>{text.whatsappTitle}</h4>
-              <a 
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="whatsapp-contact-btn"
-              >
-                💬 {text.whatsappBtn}
-              </a>
-            </div>
           </div>
         </div>
       </div>

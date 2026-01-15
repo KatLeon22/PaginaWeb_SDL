@@ -1,57 +1,25 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import { trackWhatsAppClick } from '../utils/analytics';
-import { translations, collections } from '../utils/translations';
 
-const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
-  const location = useLocation();
-  const t = translations[userLang];
-
+const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
     trackWhatsAppClick();
   };
 
-  // Determinar el mensaje según la colección actual
-  let whatsappMessage = "Hola, me interesa conocer más sobre sus productos";
-  let whatsappUrl = "https://wa.me/50247967384";
-
-  if (collectionId) {
-    const collection = collections.find((col) => col.id === collectionId);
-    if (collection) {
-      const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
-      whatsappMessage = `${t.whatsapp.message} ${collectionName}`;
-      whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
-    }
-  } else {
-    // Si estamos en la página de catálogo, intentar extraer el ID de la URL
-    const catalogMatch = location.pathname.match(/\/catalog\/(.+)/);
-    if (catalogMatch) {
-      const id = catalogMatch[1];
-      const collection = collections.find((col) => col.id === id);
-      if (collection) {
-        const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
-        whatsappMessage = `${t.whatsapp.message} ${collectionName}`;
-        whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
-      }
-    }
-  }
-
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 flex flex-col space-y-2 z-50">
+    <div className="fixed bottom-6 right-6 flex flex-col space-y-2">
+      {/* Botón Guatemala */}
       <a
-        href={whatsappUrl}
+        href="https://wa.me/50247967384"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleWhatsAppClick}
-        className="bg-green-500 hover:bg-green-600 text-white p-3 md:p-4 rounded-full shadow-lg text-center transition-all duration-300 hover:scale-110"
-        title="Contactar por WhatsApp"
-        style={{
-          boxShadow: '0 4px 15px rgba(37, 211, 102, 0.4)'
-        }}
+        className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg text-center"
       >
-        <span className="text-xl md:text-2xl">💬</span>
-        <span className="block text-xs mt-1 hidden sm:block">WhatsApp</span>
+        🇬🇹 WhatsApp GT
       </a>
+
+     
     </div>
   );
 };
