@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import '../src/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { initGA } from './utils/analytics';
+import { initGTM } from './utils/analytics';
 
-// Inicializar Google Analytics
-initGA();
+// Inicializar Google Tag Manager
+initGTM();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
